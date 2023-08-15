@@ -23,17 +23,16 @@ Things you may want to cover:
 
 * Database instrustions
  ## usersテーブル
-|Column        |Type    |Options       |
-|--------------|--------|--------------|
-|nickname      |string  |null: false   |
-|email         |string  |unique: false |
-|password      |string  |null: false   |
-|password_c    |string  |null: false   |
-|lastname      |string  |null: false   |
-|firstname     |string  |null: false   |
-|lastname_kana |string  |null: false   |
-|firstname_kana|string  |null: false   |
-|birthday      |date    |null: false   |
+|Column            |Type    |Options       |
+|------------------|--------|--------------|
+|nickname          |string  |null: false   |
+|email             |string  |unique: false |
+|encrypted_password|string  |null: false   |
+|lastname          |string  |null: false   |
+|firstname         |string  |null: false   |
+|lastname_kana     |string  |null: false   |
+|firstname_kana    |string  |null: false   |
+|birthday          |date    |null: false   |
 
 ### Association
 - has_many :items
@@ -46,13 +45,13 @@ Things you may want to cover:
 |--------------|-----------|-------------------------------|
 |title         |string     |null: false                    |
 |detail        |text       |null: false                    |
-|category      |string     |null: false                    |
-|condition     |string     |null: false                    |
-|fee           |string     |null: false                    |
-|area          |string     |null: false                    |
+|category_id   |integer    |null: false                    |
+|condition_id  |integer    |null: false                    |
+|fee_id        |integer    |null: false                    |
+|prefecture_id |integer    |null: false                    |
 |day           |date       |null: false                    |
 |price         |integer    |null: false                    |
-|user_id       |references |null: false, foreign_key: true |
+|user          |references |null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -64,8 +63,8 @@ Things you may want to cover:
 |Column    |Type       |Options                        |
 |----------|-----------|-------------------------------|
 |content   |text       |null: false                    |
-|user_id   |references |null: false, foreign_key: true |
-|item_id   |references |null: false, foreign_key: true |
+|user      |references |null: false, foreign_key: true |
+|item      |references |null: false, foreign_key: true |
 
 
 ### Association
@@ -76,8 +75,8 @@ Things you may want to cover:
  ## purchasesテーブル
 |Column    |Type       |Options                        |
 |----------|-----------|-------------------------------|
-|user_id   |references |null: false, foreign_key: true |
-|item_id   |references |null: false, foreign_key: true |
+|user      |references |null: false, foreign_key: true |
+|item      |references |null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -86,15 +85,15 @@ Things you may want to cover:
 
 
  ## addressesテーブル
-|Column     |Type       |Options                        |
-|-----------|-----------|-------------------------------|
-|postcode   |string     |null: false                    |
-|prefecture |string     |null: false                    |
-|city       |string     |null: false                    |
-|street     |string     |null: false                    |
-|building   |string     |null: false                    |
-|tel        |integer    |null: false                    |
-|purchase_id|references |null: false, foreign_key: true |
+|Column        |Type       |Options                        |
+|--------------|-----------|-------------------------------|
+|postcode      |string     |null: false                    |
+|prefecture_id |integer    |null: false                    |
+|city          |string     |null: false                    |
+|street        |string     |null: false                    |
+|building      |string     |                               |
+|tel           |integer    |null: false                    |
+|purchase      |references |null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
