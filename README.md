@@ -23,16 +23,16 @@ Things you may want to cover:
 
 * Database instrustions
  ## usersテーブル
-|Column            |Type    |Options       |
-|------------------|--------|--------------|
-|nickname          |string  |null: false   |
-|email             |string  |unique: false |
-|encrypted_password|string  |null: false   |
-|lastname          |string  |null: false   |
-|firstname         |string  |null: false   |
-|lastname_kana     |string  |null: false   |
-|firstname_kana    |string  |null: false   |
-|birthday          |date    |null: false   |
+|Column            |Type    |Options                       |
+|------------------|--------|------------------------------|
+|nickname          |string  |null: false                   |
+|email             |string  |null: false, unique: false    |
+|encrypted_password|string  |null: false                   |
+|lastname          |string  |null: false                   |
+|firstname         |string  |null: false                   |
+|lastname_kana     |string  |null: false                   |
+|firstname_kana    |string  |null: false                   |
+|birthday          |date    |null: false                   |
 
 ### Association
 - has_many :items
@@ -49,7 +49,7 @@ Things you may want to cover:
 |condition_id  |integer    |null: false                    |
 |fee_id        |integer    |null: false                    |
 |prefecture_id |integer    |null: false                    |
-|day           |date       |null: false                    |
+|day_id        |integer    |null: false                    |
 |price         |integer    |null: false                    |
 |user          |references |null: false, foreign_key: true |
 
@@ -92,7 +92,7 @@ Things you may want to cover:
 |city          |string     |null: false                    |
 |street        |string     |null: false                    |
 |building      |string     |                               |
-|tel           |integer    |null: false                    |
+|tel           |string     |null: false                    |
 |purchase      |references |null: false, foreign_key: true |
 
 ### Association
