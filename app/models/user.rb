@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
 
   validates :nickname, :birthday, presence: true
-  validates :lastname, :firstname, presence: true 
-  validates :lastname_kana, :firstname_kana, presence: true, format: { with:  /\A[ァ-ヶー－]+\z/}
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}\z/i },  length: { minimum: 6 }  
-  
+  validates :lastname, :firstname, presence: true , format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :lastname_kana, :firstname_kana, presence: true, format: { with:  /\A[ァ-ヶー－]+\z/ }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}\z/i }, length: { minimum: 6 }  
+
 
 
 end
