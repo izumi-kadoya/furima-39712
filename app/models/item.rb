@@ -9,10 +9,11 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
 
   
-   validates :title, :detail, :category_id, :condition_id, :fee_id, :prefecture_id, :duration_id, presence: true
+   validates :title , presence: true, length: { maximum: 40 }
+   validates :detail, presence: true, length: { maximum: 1000 }
    validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
    format: { with: /\A[0-9]+\z/ }
-   validates :category_id, :condition_id, :fee_id, :prefecture_id, :duration_id, numericality: {other_than: 1, message: "can't be blank"}
+   validates :category_id, :condition_id, :fee_id, :prefecture_id, :duration_id, presence: true, numericality: {other_than: 1, message: "can't be blank"}
    validate :image_check
 
    private

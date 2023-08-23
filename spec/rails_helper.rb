@@ -30,6 +30,7 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+I18n.locale = "en"
 RSpec.configure do |config|
   Webdrivers::Chromedriver.required_version = '114.0.5735.90'
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
