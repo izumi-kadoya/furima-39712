@@ -12,6 +12,7 @@ class Item < ApplicationRecord
    validates :title, :detail, :category_id, :condition_id, :fee_id, :prefecture_id, :duration_id, presence: true
    validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
    format: { with: /\A[0-9]+\z/ }
+   validates :category_id, :condition_id, :fee_id, :prefecture_id, :duration_id, numericality: {other_than: 1}
    validate :image_check
 
    private
