@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   end
    
   def create
+    binding.pry
     Item.create(item_params)
 
   end  
@@ -16,7 +17,6 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:title, :detail ,:category_od, :condition_id, :fee_id, :prefecture_id, :duration_id, :price, :image).merge(user_id: current_user.id)
 
    end
-  end
 
 
 end
