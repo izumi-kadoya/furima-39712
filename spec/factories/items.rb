@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
-    title         {Faker::Lorem.sentence, max_length: 40}
-    detail        {Faker::Lorem.sentence,max_length: 1000}
+    title { Faker::Lorem.sentence(word_count: 5).slice(0, 40) }
+    detail { Faker::Lorem.sentence(word_count: 100).slice(0, 1000) }
     category_id   {2}
     condition_id  {2}
     fee_id        {2}
