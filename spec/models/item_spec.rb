@@ -92,6 +92,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
+      it '販売価格が文字を含むと出品できない' do
+          @item.price = "300a"
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price is not a number")
+      end
       it '販売価格が299円以下では出品できない' do
         @item.price = 299
         @item.valid?
