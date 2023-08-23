@@ -10,5 +10,12 @@ class Item < ApplicationRecord
 
   
    validates :title, :detail, :category_id, :condition_id, :fee_id, :prefecture_id, :duration_id, :price, presence: true
-  
+
+   validate :image_check
+
+   private
+ 
+   def image_check
+     errors.add(:image, 'must be attached.') unless image.attached?
+   end
 end
