@@ -9,8 +9,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
 
   
-   validates :title, :detail, :category_id, :condition_id, :fee_id, :prefecture_id, :duration_id, :price, presence: true
-
+   validates :title, :detail, :category_id, :condition_id, :fee_id, :prefecture_id, :duration_id, presence: true
+   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
+   format: { with: /\A[0-9]+\z/ }
    validate :image_check
 
    private
