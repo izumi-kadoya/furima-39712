@@ -7,9 +7,8 @@ class ItemsController < ApplicationController
   end
    
   def create
-    binding.pry
     Item.create(item_params)
-
+    redirect_to root_path
   end  
      
   private
