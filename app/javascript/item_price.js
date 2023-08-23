@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
       
       if (!isNaN(value)) { 
         const taxAmount = Math.floor(value / 10);
-        addTaxDom.innerHTML = taxAmount.toString(); 
+        addTaxDom.innerHTML = taxAmount.toLocaleString(); 
 
         const taxProfitDom = document.getElementById("profit"); 
         const taxProfit = value - taxAmount; 
-        taxProfitDom.innerHTML = taxProfit.toString(); 
+        taxProfitDom.innerHTML = taxProfit.toLocaleString(); 
       }
     });
   }
