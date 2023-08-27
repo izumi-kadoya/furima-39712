@@ -1,15 +1,17 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: :index
   before_action :set_item, only: [:index, :create]
 
   def index
+    if @item.purchase.present? || current_user.id == @item.user_id
+      redirect_to root_path
+    else
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @purchase_address = PurchaseAddress.new
+    end
   end
 
   def create
-    if @item.purchase.present?
-      redirect_to root_path
-    else
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
       pay_item
@@ -18,7 +20,6 @@ class OrdersController < ApplicationController
     else
       render :index
     end
-   end
   end
 
 private
