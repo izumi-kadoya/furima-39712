@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
     redirect_to root_path
    else
     if @purchase_address.valid?
+      pay_item
       @purchase_address.save
       redirect_to root_path
     else
