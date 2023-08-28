@@ -17,10 +17,6 @@ class Item < ApplicationRecord
                                                                                 numericality: { other_than: 1, message: "can't be blank" }
   validate :image_check
 
-
-
-  
-
   private
 
   def image_check
