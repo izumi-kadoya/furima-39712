@@ -12,7 +12,7 @@ class PurchaseAddress
     validates :street
     validates :tel, format: { with: /\A\d{10,11}\z/ }
   end
-
+  attr_accessor :token
   validates :token, presence: true
 
   def save
