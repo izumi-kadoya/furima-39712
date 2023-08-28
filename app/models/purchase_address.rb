@@ -11,10 +11,6 @@ class PurchaseAddress
   validates :tel, format: { with: /\A\d{10,11}\z/}
   end
 
-  attr_accessor :token
-  validates :token, presence: true
-
-
   def save
     purchase = Purchase.create(item_id: item_id, user_id: user_id)
     Address.create(postcode: postcode, prefecture_id: prefecture_id, city: city, street: street, building: building, tel: tel, purchase_id: purchase.id)
