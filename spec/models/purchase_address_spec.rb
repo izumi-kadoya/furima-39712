@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe PurchaseAddress, type: :model do
   before do
-    @order = FactoryBot.build(:purchase_address)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @order = FactoryBot.build(:purchase_address, user_id: user.id, item_id: item.id)
   end
 
   context '内容に問題ない場合' do
@@ -16,7 +18,6 @@ RSpec.describe PurchaseAddress, type: :model do
   end
 
   context '内容に問題がある場合' do
-
     it "tokenが空では登録できないこと" do
       @order.token = nil
       @order.valid?
@@ -78,7 +79,15 @@ RSpec.describe PurchaseAddress, type: :model do
       @order.valid?
       expect(@order.errors.full_messages).to include("Tel is invalid")
     end
-
-
+    it "ユーザーが紐付いていなければ投稿できない" do
+      @order.user_id = nil
+      @order.valid?
+      expect(@order.errors.full_messages).to include("User can't be blank")
+    end
+    it "アイテムが紐付いていなければ投稿できない" do
+      @order.item_id = nil
+      @order.valid?
+      expect(@order.errors.full_messages).to include("Item can't be blank")
+    end
   end
 end
