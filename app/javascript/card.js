@@ -28,4 +28,5 @@ const pay = () => {
   });
 };
 
+document.addEventListener("DOMContentLoaded", pay);
 window.addEventListener("turbo:load", pay);
