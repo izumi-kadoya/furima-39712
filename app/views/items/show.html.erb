@@ -16,7 +16,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        ¥<%= @item.price.to_s(:delimited)%>
+       ¥<%= number_with_delimiter(@item.price) %>
       </span>
       <span class="item-postage">
         <%= @item.fee.name %>
