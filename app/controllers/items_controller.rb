@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at DESC')
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
   end
 
   def new
