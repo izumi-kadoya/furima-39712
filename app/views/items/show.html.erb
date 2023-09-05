@@ -71,16 +71,7 @@
     <div class="option">
       <div class="favorite-btn">
 
-    <% if user_signed_in? && @item.liked_by?(current_user)%>
-      <%= link_to item_like_path(@item.id), data: { turbo_method: :delete }, remote: true do %>
-        <%= image_tag "star_yellow.png" ,class:"favorite-star-icon-yellow" ,width:"20",height:"20"%>
-        <%end%>
-    <%else%>
-      <%= link_to item_likes_path(@item.id), data: { turbo_method: :post }, remote: true  do %>
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <%end%>
-      <%end%>
-
+     <%= render 'like_button', item: @item %>
         <span>お気に入り <%= @item.likes.count %></span>
       </div>
       <div class="report-btn">
