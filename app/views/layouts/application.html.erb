@@ -9,7 +9,6 @@
   <%= Gon::Base.render_data %> 
   <script type="text/javascript" src="https://js.pay.jp/v2/pay.js"></script>
   <script type="text/javascript">
-   Payjp.setPublicKey(gon.public_key);
   </script>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>

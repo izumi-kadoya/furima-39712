@@ -2,10 +2,10 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :authenticate_user!, only: :index
   def index
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     if @item.purchase.present? || current_user.id == @item.user_id
       redirect_to root_path
     else
-      gon.public_key = ENV['PAYJP_PUBLIC_KEY']
       @purchase_address = PurchaseAddress.new
     end
   end
