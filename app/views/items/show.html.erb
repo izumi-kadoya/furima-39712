@@ -69,7 +69,7 @@
       </tbody>
     </table>
     <div class="option">
-      <div class="favorite-btn"<%= @item.id %>>
+  <div class="favorite-btn" id="favorite-btn-<%= @item.id %>">
     <%= render partial: "likes/like", locals: { item: @item } %>
         <span>お気に入り <%= @item.likes.count %></span>
       </div>
